@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ImprovedAmazonTestSuite" verbose="1">
+
+  <test name="Amazon Search for Harry Potter" preserve-order="true">
+    <parameter name="searchTerm" value="Harry Potter"/>
+    <parameter name="expectedBreadCrumb" value="&quot;Harry Potter&quot;"/>
+    <parameter name="expectedFirstSearchResult" value="Harry Potter: The Complete 8-Film Collection"/>
+    <classes>
+      <class name="tests.ImprovedAmazonTests">
+        <methods>
+          <include name="loadAmazonHomePage" />
+          <include name="search" />
+          <include name="verifyBreadCrumb" />
+          <include name="verifyFirstSearchResult" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+  <test name="Amazon Search for Harry Potter Book" preserve-order="true">
+    <parameter name="searchTerm" value="Harry Potter"/>
+    <parameter name="dropDownSelection" value="Books"/>
+    <parameter name="expectedFirstSearchResult" value="Harry Potter Signature Edition 7-Book Box Set"/>
+    <classes>
+      <class name="tests.ImprovedAmazonTests">
+        <methods>
+          <include name="loadAmazonHomePage" />
+          <include name="selectDropDownOption" />
+          <include name="search" />
+          <include name="verifyFirstSearchResult" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+</suite>
